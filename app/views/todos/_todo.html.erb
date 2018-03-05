@@ -1,3 +1,5 @@
+<!-- Rails 提供的 remote: true 只能使用在超連結和表單上，如果是這兩種情況以外的需求，就需要自行綁定事件來發送 AJAX 請求。 -->
+
 <!-- checkbox -->
 <td class="my-pointer">
   <%= link_to toggle_check_todo_path(todo), id: "todo-check-#{todo.id}", remote: true, method: :post do %>

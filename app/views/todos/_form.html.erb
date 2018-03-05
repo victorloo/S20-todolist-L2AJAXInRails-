@@ -1,5 +1,7 @@
 <!-- Add new todo -->
 <!-- 類似新增 todo 表單內容 -->
+<!-- Rails 提供的 remote: true 只能使用在超連結和表單上，如果是這兩種情況以外的需求，就需要自行綁定事件來發送 AJAX 請求。 -->
+
 <%= form_for @todo, { class: "my-form", remote: true } do |f| %>
   <div class="input-group">
     <%= f.text_area :title, :class => "form-control" %>
