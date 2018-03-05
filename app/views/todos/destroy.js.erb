@@ -1,1 +1,6 @@
+// 新增一個與 action 同名的 js.erb 檔讓 server 生成 JavaScript 程式碼， 
+// 回傳給 client，client 才能透過執行這些程式碼去更動網頁內容。
+
 $("#todo-<%= @todo.id %>").remove();
+// 使用 jQuery 選擇器透過 id 把想要刪除的 todo 找出來，
+// 並使用 jQuery 的 remove 方法將該 todo 移除。

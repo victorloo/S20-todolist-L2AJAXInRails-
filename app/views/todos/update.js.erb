@@ -1,2 +1,9 @@
+// 新增一個與 action 同名的 js.erb 檔讓 server 生成 JavaScript 程式碼， 
+// 回傳給 client，client 才能透過執行這些程式碼去更動網頁內容。
+
 <% html = j( render :partial => "todo", :locals => { :todo => @todo } ) %>
+// ruby 語法︰ j = escape_javascript 把單雙引號調整成 \" 的版本， 
+// 確保不會因為單雙引號的配對而引起錯誤。
+
 $("#todo-<%= @todo.id %>").html("<%= html %>")
+// 使用 jQuery 的選擇器找出 todo，用 Ruby 的html 變數裡的內容替換現在的內容。

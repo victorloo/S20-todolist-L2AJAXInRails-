@@ -1,3 +1,14 @@
+// 新增一個與 action 同名的 js.erb 檔讓 server 生成 JavaScript 程式碼， 
+// 回傳給 client，client 才能透過執行這些程式碼去更動網頁內容。
+
 <% html = j( render :partial => "form", :locals => { :todo => @todo } ) %>
+// ruby 語法︰ j = escape_javascript 把單雙引號調整成 \" 的版本， 
+// 確保不會因為單雙引號的配對而引起錯誤。
+
 var todo_tds = $("#todo-<%= @todo.id %>").children();
+// 使用 jQuery 選擇器透過 id 找出網頁裡對應的 todo，即負責該 todo 的 tr 標籤 
+// 使用 children 方法把該 todo 下層的 elements 提出來，即 _todo.html.erb 裡的三個 td 標籤
+
 $(todo_tds[1]).html("<%= html %>");
+// 負責文字的 td 會是第二個 element，因此請透過 index 1 從 elements 裡取出該 td
+// 最後使用 jQuery 的 html 方法把 Ruby 的 html 變數給放入剛取出的 td 裡

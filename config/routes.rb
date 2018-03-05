@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :todos do
     member do
       post :toggle_check
+      # 負責「完成／未完成」的 toggle_check action。
     end
   end
 end

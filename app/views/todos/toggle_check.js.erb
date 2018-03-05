@@ -1,6 +1,13 @@
+// 新增一個與 action 同名的 js.erb 檔讓 server 生成 JavaScript 程式碼， 
+// 回傳給 client，client 才能透過執行這些程式碼去更動網頁內容。
+
 var todo_checkbox = $("#todo-check-<%= @todo.id %>");
+// 由於我們把負責「完成／未完成」的 HTML 標籤放在發送請求的連結下，
+// 所以在 toggle_check.js.erb 裡可以用 jQuery 選擇器找出負責發送請求的連結 todo-check-id
+
 <% if @todo.done? %>
   todo_checkbox.html('<span class="my-font glyphicon glyphicon-check"></span>');
 <% else %>
   todo_checkbox.html('<span class="my-font glyphicon glyphicon-unchecked"></span>');
 <% end %>
+// 使用 jQuery 的 html 方法根據情況抽換內容

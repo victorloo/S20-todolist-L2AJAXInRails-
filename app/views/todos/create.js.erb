@@ -1,4 +1,10 @@
+// 新增一個與 action 同名的 js.erb 檔讓 server 生成 JavaScript 程式碼，
+// 回傳給 client，client 才能透過執行這些程式碼去更動網頁內容。
+
 var todo = document.createElement("tr");
 todo.id = "todo-<%= @todo.id %>";
+// 將 todo- 和資料庫賦予的 id 結合
 todo.innerHTML = "<%= j render(:partial => "todo", :locals => { :todo => @todo }) %>";
+// ruby 語法︰ j = escape_javascript 把單雙引號調整成 \" 的版本，
+// 確保不會因為單雙引號的配對而引起錯誤。
 $("#todolist").append(todo);

@@ -10,6 +10,7 @@
     <!-- Add new todo -->
     <div class="panel-body">
     <%= form_for @todo, {class: "my-form", remote: true } do |f| %>
+    <!-- 加上 remote: true 字樣表示使用非同步請求 -->
       <%= f.label "Add New To-Do" %>
       <div class="input-group">
         <%= f.text_area :title, :class => "form-control" %>
@@ -25,6 +26,7 @@
       <tbody id="todolist">
         <% @todos.each do |todo| %>
           <tr id="todo-<%= todo.id %>">
+            <!-- 設定為 todo-id，方便使用 jQuery 選擇器和方法對 todo 內容進行更動。 -->
             <%= render :partial => "todo", :locals => { :todo => todo } %>
           </tr>
         <% end %>
